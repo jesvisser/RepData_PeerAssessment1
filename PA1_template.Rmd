@@ -27,8 +27,8 @@ activity_per_day <- activity %>%
   summarise(steps_per_day = sum(steps, na.rm = TRUE)) %>%
   ungroup()
 
-mean_steps_day <- round(mean(activity_per_day$steps_per_day, na.rm = TRUE))
-median_steps_day <- round(median(activity_per_day$steps_per_day, na.rm = TRUE))
+mean_steps_day <- as.character(round(mean(activity_per_day$steps_per_day, na.rm = TRUE)))
+median_steps_day <- as.character(round(median(activity_per_day$steps_per_day, na.rm = TRUE)))
 ```
 
 ```{r histogram total steps per day, echo = TRUE}
@@ -102,8 +102,8 @@ activity_per_day_imputed <- activity_imputed %>%
   summarise(steps_per_day = sum(steps, na.rm = TRUE)) %>%
   ungroup()
 
-mean_steps_day_imputed <- round(mean(activity_per_day_imputed$steps_per_day, na.rm = TRUE))
-median_steps_day_imputed <- round(median(activity_per_day_imputed$steps_per_day, na.rm = TRUE))
+mean_steps_day_imputed <- as.character(round(mean(activity_per_day_imputed$steps_per_day, na.rm = TRUE)))
+median_steps_day_imputed <- as.character(round(median(activity_per_day_imputed$steps_per_day, na.rm = TRUE)))
 ```
 
 ```{r histogram total steps per day incl imputed data, echo = TRUE}

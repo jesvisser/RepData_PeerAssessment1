@@ -29,8 +29,8 @@ activity_per_day <- activity %>%
   summarise(steps_per_day = sum(steps, na.rm = TRUE)) %>%
   ungroup()
 
-mean_steps_day <- round(mean(activity_per_day$steps_per_day, na.rm = TRUE))
-median_steps_day <- round(median(activity_per_day$steps_per_day, na.rm = TRUE))
+mean_steps_day <- as.character(round(mean(activity_per_day$steps_per_day, na.rm = TRUE)))
+median_steps_day <- as.character(round(median(activity_per_day$steps_per_day, na.rm = TRUE)))
 ```
 
 
@@ -48,8 +48,8 @@ activity_per_day %>%
 
 ![](PA1_template_files/figure-html/histogram total steps per day-1.png)<!-- -->
 
-The mean total number of steps taken per day is 1.0766\times 10^{4}.
-The median total number of steps taken per day is 1.0765\times 10^{4}.
+The mean total number of steps taken per day is 10766.
+The median total number of steps taken per day is 10765.
 
 
 ## What is the average daily activity pattern?
@@ -133,8 +133,8 @@ activity_per_day_imputed <- activity_imputed %>%
   summarise(steps_per_day = sum(steps, na.rm = TRUE)) %>%
   ungroup()
 
-mean_steps_day_imputed <- round(mean(activity_per_day_imputed$steps_per_day, na.rm = TRUE))
-median_steps_day_imputed <- round(median(activity_per_day_imputed$steps_per_day, na.rm = TRUE))
+mean_steps_day_imputed <- as.character(round(mean(activity_per_day_imputed$steps_per_day, na.rm = TRUE)))
+median_steps_day_imputed <- as.character(round(median(activity_per_day_imputed$steps_per_day, na.rm = TRUE)))
 ```
 
 
@@ -152,8 +152,8 @@ activity_per_day_imputed %>%
 
 ![](PA1_template_files/figure-html/histogram total steps per day incl imputed data-1.png)<!-- -->
 
-After imputing missing values. The mean total number of steps taken per day is 1.0766\times 10^{4}.
-And the median total number of steps taken per day is 1.0766\times 10^{4}. These are not much different then before. 
+After imputing missing values. The mean total number of steps taken per day is 10766.
+And the median total number of steps taken per day is 10766. These are not much different then before. 
 The impact of imputing missing data on the estimates of the total daily number of steps is that there are lot's more days with an average number of steps than before.
 
 
