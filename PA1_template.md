@@ -46,7 +46,7 @@ activity_per_day %>%
   ggtitle("Number of steps per day", subtitle = "(missing values ignored)")
 ```
 
-![](PA1_template_files/figure-html/histogram total steps per day-1.png)<!-- -->
+![](PA1_template_files/figure-html/histogram-1.png)<!-- -->
 
 The mean total number of steps taken per day is 10766.
 The median total number of steps taken per day is 10765.
@@ -78,7 +78,7 @@ daily_activity_pattern %>%
   ylab("average number of steps")
 ```
 
-![](PA1_template_files/figure-html/time series plot on daily activity pattern-1.png)<!-- -->
+![](PA1_template_files/figure-html/time_series-1.png)<!-- -->
 
 On average across all the days in the dataset, interval 835 contains the maximum number of steps.
 
@@ -150,7 +150,7 @@ activity_per_day_imputed %>%
   ggtitle("Number of steps per day", subtitle = "(incl imputed data)")
 ```
 
-![](PA1_template_files/figure-html/histogram total steps per day incl imputed data-1.png)<!-- -->
+![](PA1_template_files/figure-html/histogram_imputed-1.png)<!-- -->
 
 After imputing missing values. The mean total number of steps taken per day is 10766.
 And the median total number of steps taken per day is 10766. These are not much different then before. 
@@ -188,7 +188,7 @@ daily_activity_pattern_imputed %>%
   ylab("average number of steps")
 ```
 
-![](PA1_template_files/figure-html/time series graph on avg steps per interval for imputed data per weekday-1.png)<!-- -->
+![](PA1_template_files/figure-html/time_series_weekday-1.png)<!-- -->
 
 
 

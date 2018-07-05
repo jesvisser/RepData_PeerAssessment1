@@ -8,7 +8,7 @@ output:
 
 ## Loading and preprocessing the data
 
-```{r load activity data, echo = TRUE, message = FALSE, warning = FALSE}
+```{r load_data, echo = TRUE, message = FALSE, warning = FALSE}
 library(readr)
 library(dplyr)
 library(ggplot2)
@@ -19,7 +19,7 @@ activity <- read_csv("activity.zip")
 
 ## What is mean total number of steps taken per day?
 
-```{r calculation total steps per day, echo = TRUE, warning = FALSE}
+```{r total_steps, echo = TRUE, warning = FALSE}
 # Calculations for total steps per day
 activity_per_day <- activity %>%
   filter(!is.na(steps)) %>%
@@ -31,7 +31,7 @@ mean_steps_day <- as.character(round(mean(activity_per_day$steps_per_day, na.rm 
 median_steps_day <- as.character(round(median(activity_per_day$steps_per_day, na.rm = TRUE)))
 ```
 
-```{r histogram total steps per day, echo = TRUE}
+```{r histogram, echo = TRUE}
 # Create a histogram on steps per day 
 # I adjusted the 'binwidth' to 1800
 activity_per_day %>%
@@ -49,7 +49,7 @@ The median total number of steps taken per day is `r median_steps_day`.
 
 ## What is the average daily activity pattern?
 
-```{r calculation avg steps per interval, echo = TRUE}
+```{r avg_interval, echo = TRUE}
 # Calculations for average steps per interval
 daily_activity_pattern <- activity %>%
   filter(!is.na(steps)) %>%
@@ -62,7 +62,7 @@ max_interval <- daily_activity_pattern %>%
   
 ```
 
-```{r time series plot on daily activity pattern, echo = TRUE}
+```{r time_series, echo = TRUE}
 # Create time series plot on average steps per interval
 daily_activity_pattern %>%
   ggplot(aes(x = interval, y = avg_steps)) +
@@ -85,7 +85,7 @@ summary(activity)
 
 The missing values are imputed whit mean for the specific 5-minute interval:
 
-```{r impute missing data, echo = TRUE}
+```{r impute, echo = TRUE}
 # impute missing data
 activity_imputed <- activity %>%
   group_by(interval) %>%
@@ -95,7 +95,7 @@ activity_imputed <- activity %>%
 summary(activity_imputed)
 ```
 
-```{r calculation total steps per day incl imputed data, echo = TRUE}
+```{r total_steps_imputed, echo = TRUE}
 # Calculate total steps per day incl imputated data
 activity_per_day_imputed <- activity_imputed %>%
   group_by(date) %>%
@@ -106,7 +106,7 @@ mean_steps_day_imputed <- as.character(round(mean(activity_per_day_imputed$steps
 median_steps_day_imputed <- as.character(round(median(activity_per_day_imputed$steps_per_day, na.rm = TRUE)))
 ```
 
-```{r histogram total steps per day incl imputed data, echo = TRUE}
+```{r histogram_imputed, echo = TRUE}
 # Create a histogram on total steps per day incl imputed data 
 # I adjusted the 'binwidth' to 1800
 activity_per_day_imputed %>%
@@ -125,7 +125,7 @@ The impact of imputing missing data on the estimates of the total daily number o
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
-```{r add weekdays, echo = TRUE}
+```{r weekdays, echo = TRUE}
 # Add factor value to imputated data wich indicates weekdays and weekends
 activity_imputed <- activity_imputed %>%
   mutate(weekday = weekdays(date)) %>%
@@ -133,7 +133,7 @@ activity_imputed <- activity_imputed %>%
   mutate(weekday = as.factor(weekday))
 ```
 
-```{r calculation avg steps per interval per weekday, echo = TRUE}
+```{r avg_steps_weekday, echo = TRUE}
 # Calculations for average steps per interval per weekday/weekend
 daily_activity_pattern_imputed <- activity_imputed %>%
   group_by(interval, weekday) %>%
@@ -141,7 +141,7 @@ daily_activity_pattern_imputed <- activity_imputed %>%
   ungroup()
 ```
 
-```{r time series graph on avg steps per interval for imputed data per weekday, echo = TRUE}
+```{r time_series_weekday, echo = TRUE}
 # Create time series graph on avg steps per interval for imputed data per weekday
 daily_activity_pattern_imputed %>%
   ggplot(aes(x = interval, y = avg_steps))+
